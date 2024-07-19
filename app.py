@@ -88,7 +88,8 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
 
     # Plot chart with Streamlit
     st.write("AutoGluon Chart:")
-    predictor.plot(df_test, predictions, quantile_levels=[0.1, 0.9], max_history_length=200, max_num_item_ids=4)
+    fig = predictor.plot(df_test, predictions, quantile_levels=[0.1, 0.9], max_history_length=200, max_num_item_ids=4)
+    st.pyplot(fig)
 
     try:
         num_rows4 = st.text_input("Enter the number of rows to display:", "25",key="number4")
