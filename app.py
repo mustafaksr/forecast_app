@@ -103,8 +103,8 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
 
     # Scatter plot section
     st.write("### Train Line Plot")
-    X = st.selectbox("Select X axis:",df.columns)
-    Y = st.selectbox("Select Y axis:",df.columns)
+    X = st.selectbox("Select X axis:",df.columns,index=1)
+    Y = st.selectbox("Select Y axis:",df.columns,index=2)
     num_rows2 = st.text_input("Enter the number of rows to display:", "250",key="number2")
     data = (df.iloc[:int(num_rows2)][[X,Y]]).set_index(X)
     st.line_chart(data=data)
@@ -112,12 +112,12 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
     st.write("### Select id and timestamp")
 
     try:
-        id_column = st.selectbox("Select id column:", df.columns, index= "item_id")
+        id_column = st.selectbox("Select id column:", df.columns, index= 0)
         
     except:
         id_column = st.selectbox("Select id column:", df.columns)
     try:
-        timestamp_column = st.selectbox("Select timestamp column:", df.columns, index= "timestamp")
+        timestamp_column = st.selectbox("Select timestamp column:", df.columns, index= 1)
         
     except:
         timestamp_column = st.selectbox("Select timestamp column:", df.columns)
@@ -139,13 +139,13 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
 
     # Place each input widget in a different column
     with _col1:
-        quantile_levels = st.multiselect("Select quantiles:", [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
-        time_limit = st.number_input("Time Limit (seconds)(increase value for better result.):", min_value=1, value=30,max_value=40)
+        quantile_levels = st.multiselect("Select quantiles:", [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],default=[0.1,0.9])
+        time_limit = st.number_input("Time Limit (seconds)(increase value for better result.):", min_value=1, value=90,max_value=240)
 
     with _col2:
         max_num_item_ids = st.selectbox("Select max items", [4, 6, 8])
         try:
-            presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"],index="medium_quality")
+            presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"],index=0)
         except:
             presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"])
 
@@ -153,7 +153,7 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
         max_history_length = st.selectbox("Select max window", [200, 300, 400])
 
         try:
-            target_column = st.selectbox("Select target column:", df.columns,index="target")
+            target_column = st.selectbox("Select target column:", df.columns,index=2)
         except:
             target_column = st.selectbox("Select target column:", df.columns)
 
