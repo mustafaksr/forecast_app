@@ -27,6 +27,19 @@ Welcome to the **Simple Forecast App**! This application enables you to load, vi
 
 This app is ideal for quickly setting up and evaluating time series forecasting models with minimal coding effort. Enjoy forecasting with ease!
 
+You can download and use data as below Autogluon csv.
+
+train:
+```
+https://autogluon.s3.amazonaws.com/datasets/timeseries/m4_hourly_subset/train.csv
+```
+
+test:         
+```
+https://autogluon.s3.amazonaws.com/datasets/timeseries/m4_hourly_subset/test.csv
+```
+
+
 """)
 
 st.write("## Load Data")

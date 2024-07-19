@@ -1,4 +1,3 @@
-# Simple Forecast App - Streamlit
 Welcome to the **Simple Forecast App**! This application enables you to load, view, and analyze time series data using AutoGluon's powerful forecasting capabilities. Follow the steps below to utilize the app effectively:
          
 **Note:** Be sure that the correct columns are selected for training to ensure the forecasting app runs successfully.
@@ -11,3 +10,15 @@ Welcome to the **Simple Forecast App**! This application enables you to load, vi
 7. **View Results**: Examine the leaderboard and predictions, and download the results as CSV and charts as PNG.
 
 This app is ideal for quickly setting up and evaluating time series forecasting models with minimal coding effort. Enjoy forecasting with ease!
+
+You can download and use data as below Autogluon csv.
+
+train:
+```
+https://autogluon.s3.amazonaws.com/datasets/timeseries/m4_hourly_subset/train.csv
+```
+
+test:         
+```
+https://autogluon.s3.amazonaws.com/datasets/timeseries/m4_hourly_subset/test.csv
+```
