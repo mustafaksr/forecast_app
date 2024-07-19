@@ -133,17 +133,36 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
 
     st.write("## AutoGluon Parameters")
     st.write("### Set Parameters:")
-    prediction_length = st.number_input("Prediction Length:", min_value=1, value=48)
-    try:
-        target_column = st.selectbox("Select target column:", df.columns,index="target")
-    except:
-        target_column = st.selectbox("Select target column:", df.columns)
-    try:
-        presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"],index="medium_quality")
-    except:
-        presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"])
 
-    time_limit = st.number_input("Time Limit (seconds):", min_value=1, value=10)
+    # Create four columns for the inputs
+    _col1, _col2, _col3, _col4 = st.columns(4)
+
+    # Place each input widget in a different column
+    with _col1:
+        quantile_levels = st.multiselect("Select quantiles:", [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
+        time_limit = st.number_input("Time Limit (seconds)(increase value for better result.):", min_value=1, value=60,max_value=300)
+
+    with _col2:
+        max_num_item_ids = st.selectbox("Select max items", [4, 6, 8])
+        try:
+            presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"],index="medium_quality")
+        except:
+            presets = st.selectbox("Select presets:", ["medium_quality", "high_quality", "best_quality"])
+
+    with _col3:
+        max_history_length = st.selectbox("Select max window", [200, 300, 400])
+
+        try:
+            target_column = st.selectbox("Select target column:", df.columns,index="target")
+        except:
+            target_column = st.selectbox("Select target column:", df.columns)
+
+    with _col4:
+        prediction_length = st.number_input("Prediction Length:", min_value=1, value=48)
+
+
+
+
 
     predictor = TimeSeriesPredictor(
         prediction_length=prediction_length,
@@ -161,11 +180,12 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
     predictions = predictor.predict(train_data)
     LB = predictor.leaderboard(df_test)
     st.dataframe(LB)
-
+    
     # Plot chart with Streamlit
     st.write("AutoGluon Chart:")
-    fig = predictor.plot(df_test, predictions, quantile_levels=[0.1, 0.9], max_history_length=200, max_num_item_ids=4)
+    fig = predictor.plot(df_test, predictions, quantile_levels=[0.1, 0.9], max_history_length=max_history_length, max_num_item_ids=max_num_item_ids)
     st.pyplot(fig)
+
 
     st.write("### Predictions Data:")
     # Convert the pandas DataFrame to a CSV
