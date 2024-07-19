@@ -77,7 +77,8 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
     X = st.selectbox("Select X axis:",df.columns)
     Y = st.selectbox("Select Y axis:",df.columns)
     num_rows2 = st.text_input("Enter the number of rows to display:", "250",key="number2")
-    st.line_chart(data=df.iloc[:int(num_rows2)],x=X,y=Y)
+    data = df.iloc[:int(num_rows2)]
+    st.line_chart(data=data,x=X,y=Y)
     st.write("## Setup Training Data")
     st.write("### Select id and timestamp")
 
