@@ -140,7 +140,7 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
     # Place each input widget in a different column
     with _col1:
         quantile_levels = st.multiselect("Select quantiles:", [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
-        time_limit = st.number_input("Time Limit (seconds)(increase value for better result.):", min_value=1, value=60,max_value=300)
+        time_limit = st.number_input("Time Limit (seconds)(increase value for better result.):", min_value=1, value=30,max_value=40)
 
     with _col2:
         max_num_item_ids = st.selectbox("Select max items", [4, 6, 8])
