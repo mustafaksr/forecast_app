@@ -1,4 +1,4 @@
-# Simple Forecast App
+# Simple Forecast App - Streamlit
 Welcome to the **Simple Forecast App**! This application enables you to load, view, and analyze time series data using AutoGluon's powerful forecasting capabilities. Follow the steps below to utilize the app effectively:
          
 **Note:** Be sure that the correct columns are selected for training to ensure the forecasting app runs successfully.

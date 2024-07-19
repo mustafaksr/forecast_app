@@ -156,7 +156,7 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
 
     st.write("### Predictions Data:")
     # Convert the pandas DataFrame to a CSV
-    @st.cache_data
+    @st.experimental_memo
     def convert_df(_df):
         # IMPORTANT: Cache the conversion to prevent computation on every rerun
         return _df.to_csv().encode("utf-8")
