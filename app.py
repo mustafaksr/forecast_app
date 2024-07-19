@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import math
 import pandas as pd
 from autogluon.timeseries import TimeSeriesDataFrame, TimeSeriesPredictor
+from io import BytesIO
 
 # Title of the app
 st.title('Simple Forecast App')
@@ -155,7 +156,19 @@ if (uploaded_file is not None) and (uploaded_file2 is not None):
         file_name="predictions.csv",
         mime="text/csv",
     )
+    st.write("### Download predictions chart as PNG:")
+    # Save the plot to a BytesIO buffer
+    buf = BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
 
+    # Add a download button
+    st.download_button(
+        label="Download plot as PNG",
+        data=buf,
+        file_name="plot.png",
+        mime="image/png"
+    )
 
     
 else:
