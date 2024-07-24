@@ -2,6 +2,8 @@
 
 Welcome to the **Simple Forecast App**! This application enables you to load, view, and analyze time series data using AutoGluon's powerful forecasting capabilities. Follow the steps below to utilize the app effectively:
 
+[Access Forecast App](https://simple-forecast-app.streamlit.app/)
+
 ## Features
 
 1. **Load Data**: Upload your training and testing CSV files.
